@@ -6,26 +6,54 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:28:23 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/24 13:23:36 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 10:27:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rotate(t_node **s)
-{
-    t_node  *last;
+// void    rotate(t_node **s)
+// {
+//     t_node  *last;
     
-    if (!*s ||(*s)->next)
-        return ;
-    last = last_node(*s);
-    last->next = *s;
-    *s = (*s)->next;
-    (*s)->prev = NULL;
-    last->next->prev= last;
-    last->next->next = NULL;
-}
+//     if (!*s ||!(*s)->next)
+//         return ;
+//     last = last_node(*s);
+//     last->next = *s;
+//     *s = (*s)->next;
+//     (*s)->prev = NULL;
+//     last->next->prev= last;
+//     last->next->next = NULL;
+// }
 
+// void rotate(t_node **s) {
+//     if (!*s || !(*s)->next)
+//         return;
+//     t_node *first = *s;
+//     t_node *last = last_node(*s);
+//     *s = first->next;
+//     (*s)->prev = NULL;
+//     last->next = first;
+//     first->prev = last;
+//     first->next = NULL;
+// }
+
+void	rotate(t_node **s)
+{
+	t_node	*first;
+	t_node	*last;
+
+	if (!*s || !(*s)->next)
+		return ;
+
+	first = *s;
+	*s = first->next;
+	(*s)->prev = NULL;
+	last = last_node(*s);
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;
+}
 
 void	ra(t_node **a)
 {

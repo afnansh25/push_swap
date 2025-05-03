@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 11:47:39 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/24 13:34:10 by codespace        ###   ########.fr       */
+/*   Updated: 2025/04/29 17:29:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,22 @@ int	is_valid_input(char *str)
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
+	{
+		if (!str[i+1])
+		return (0);
 		i++;
+	}
 	if (str[i] == '\0')
 		return (0);
-
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			return (1);
+			return (0);
 		i++;
 	}
 	return (1); 
 }
+
 int	has_duplicate(t_node *stack)
 {
 	t_node	*current;

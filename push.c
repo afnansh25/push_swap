@@ -6,34 +6,48 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:49:36 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/21 16:00:55 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 11:21:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// void push(t_node **des, t_node **src) {
+//     if (!*src) return;
+//     t_node *temp = *src;
+//     *src = (*src)->next;
+//     if (*src)
+//         (*src)->prev = NULL;
+//     temp->next = *des;
+//     if (*des)
+//         (*des)->prev = temp;
+//     *des = temp;
+// }
+
 void    push(t_node **des, t_node **src)
 {
     t_node  *temp_node;
     
-    if (!*src)
+    if (!src || !*src)
         return ;
     temp_node = *src;
     *src = (*src)->next;
-    (*src)->prev = NULL;
+    if (*src)
+        (*src)->prev = NULL;
+    temp_node->next = NULL;
     temp_node->prev = NULL;
-    if(!des)
+    if(!*des)
     {
         *des = temp_node;
-        temp_node->next = NULL;
     }
     else
     {
         temp_node->next = *des;
-        temp_node->next->prev = temp_node;
+       (*des)->prev = temp_node;
         *des = temp_node;
     }
 }
+
 void    pa(t_node **b, t_node **a)
 {
     push(a, b);

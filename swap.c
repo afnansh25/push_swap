@@ -6,11 +6,25 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:26:22 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/21 16:01:11 by codespace        ###   ########.fr       */
+/*   Updated: 2025/04/29 15:00:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// void swap(t_node **s) {
+//     if (!*s || !(*s)->next)
+//         return;
+//     t_node *first = *s;
+//     t_node *second = first->next;
+//     first->next = second->next;
+//     if (second->next)
+//         second->next->prev = first;
+//     second->prev = NULL;
+//     second->next = first;
+//     first->prev = second;
+//     *s = second;
+// }
 
 void    swap(t_node **s)
 {
@@ -24,6 +38,7 @@ void    swap(t_node **s)
     (*s)->next = (*s)->prev;
     (*s)->prev = NULL;
 }
+
 void    sa(t_node **a)
 {
     swap(a);

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:42:51 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/24 13:40:34 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 11:49:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	write_error(void);
 
 //initialize
 t_node	*create_node(int value);
-void	add_node(t_node **stack, int value);
+int		add_node(t_node **stack, int value);
 int		stack_sorted(t_node *s);
 int		initialize_stack(t_node **stack, char **args);
 void	assign_indexes(t_node *stack);
@@ -78,9 +78,17 @@ t_node	*last_node(t_node *s);
 int 	stack_len(t_node *s);
 void	free_stack(t_node **stack);
 
+int find_maxbit(int nbr);
+int find_biggest(t_node *stack);
+int min_pos_from_top(t_node *stack, t_node *min_node);
+
 //str_utils
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 void	print_stack(t_node *stack);
+
+//split
+size_t	count_words(char const *s, char c);
+void	*free_split(char **split, size_t k);
 
 #endif
