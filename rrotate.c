@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rrotate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:58:03 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/17 18:12:39 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:36:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,20 @@
 
 void    rrotate(t_node **s)
 {
+    t_node  *first;
     t_node  *last;
+    
     if (!*s || !(*s)->next)
         return ;
+    first = *s;
     last = last_node(*s);
-    last->prev->next = NULL;
+    if (!last)
+        return ;
+    while(first->next != last)
+        first = first->next;
+    first->next = NULL;
     last->next = *s;
-    last->prev = NULL;
     *s = last;
-    last->next->prev = last;
 }
 
 void	rra(t_node **a)

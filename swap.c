@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:26:22 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/29 15:00:45 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:33:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@
 
 void    swap(t_node **s)
 {
+    t_node *temp_node;
     if (!*s || !(*s)->next)
         return ;
+    temp_node = *s;
     *s = (*s)->next;
-    (*s)->prev->prev = *s;
-    (*s)->next->prev = (*s)->next;
-    if ((*s)->next)
-        (*s)->prev->prev = (*s)->prev;
-    (*s)->next = (*s)->prev;
-    (*s)->prev = NULL;
+    temp_node->next = (*s)->next;
+    (*s)->next = temp_node;
 }
 
 void    sa(t_node **a)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:42:51 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 11:49:04 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:59:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_node
 	int	value;
 	int	index;
 	struct	s_node	*next;
-	struct	s_node	*prev;
+	// struct	s_node	*prev;
 } t_node;
 
 int		ft_atoi(const char *str, int *error);
@@ -33,7 +33,7 @@ char	**ft_split(char const *s, char c);
 int 	is_valid_input(char *av);
 int		has_duplicate(t_node *stack);
 int		is_overflow(unsigned long result, int sign);
-void	write_error(void);
+void	write_error(t_node **a);
 
 //initialize
 t_node	*create_node(int value);

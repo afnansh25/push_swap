@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:07:29 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 17:34:29 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:39:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,8 @@ void radix_sort(t_node **a, t_node **b)
     i = 0;
     while (i < max_bits) 
     {
-        size = stack_len(*a);
         j = 0;
+        size = stack_len(*a);
         while (j < size) 
         {
             if (((*a)->index >> i) & 1)
@@ -134,8 +134,11 @@ void radix_sort(t_node **a, t_node **b)
                 pb(b, a);
             j++;
         }
+        
         while (*b)
+        {
             pa(a, b);
+        }
         i++;
     }
 }

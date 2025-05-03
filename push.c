@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:49:36 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 11:21:29 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:39:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,29 @@ void    push(t_node **des, t_node **src)
 {
     t_node  *temp_node;
     
-    if (!src || !*src)
+    // if (!src || !*src)
+    //     return ;
+    if (!des || !*des)
         return ;
-    temp_node = *src;
-    *src = (*src)->next;
-    if (*src)
-        (*src)->prev = NULL;
-    temp_node->next = NULL;
-    temp_node->prev = NULL;
-    if(!*des)
+    temp_node = *des;
+    *des = (*des)->next;
+    // if (*src)
+    //     (*src)->prev = NULL;
+    // temp_node->next = NULL;
+    // temp_node->prev = NULL;
+    if(!*src)
     {
-        *des = temp_node;
+        // *des = temp_node;
+        temp_node->next = NULL;
+        (*src) = temp_node;
+        // temp_node->next = NULL;
     }
     else
     {
-        temp_node->next = *des;
-       (*des)->prev = temp_node;
-        *des = temp_node;
+        temp_node->next = *src;
+        // temp_node->next->prev = temp_node;
+    //    (*des)->prev = temp_node;
+        *src = temp_node;
     }
 }
 

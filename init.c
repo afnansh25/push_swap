@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 13:54:06 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/30 13:13:11 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:58:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_node	*create_node(int value)
 	new->value = value;
 	new->index = -1;
 	new->next = NULL;
-	new->prev = NULL;
+	// new->prev = NULL;
 	return (new);
 }
 int	add_node(t_node **stack, int value)
@@ -42,7 +42,7 @@ int	add_node(t_node **stack, int value)
 	while (last->next)
 		last = last->next;
 	last->next = new;
-	new->prev = last;
+	// new->prev = last;
 	return(1);
 }
 
@@ -143,14 +143,14 @@ int initialize_stack(t_node **stack, char **args) {
     while (args[i]) {
         error = 0;
         if (!is_valid_input(args[i]))
-            return(0);
+		  		write_error(stack);
         value = ft_atoi(args[i], &error);
         if (error || !add_node(stack, value))
-            return (0);
+		  		write_error(stack);
         i++;
     }
     if (has_duplicate(*stack))
-        return(0);
+	 		write_error(stack);;
     assign_indexes(*stack);
     return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 11:47:39 by codespace         #+#    #+#             */
-/*   Updated: 2025/04/29 17:29:08 by codespace        ###   ########.fr       */
+/*   Updated: 2025/05/03 23:58:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ int	is_overflow(unsigned long result, int sign)
 	return (0);
 }
 
-void	write_error(void)
+void	write_error(t_node **a)
 {
 	write(2, "Error\n", 6);
+	free_stack(a);
 	exit(1);
 }
