@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 13:54:06 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 23:58:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/04 14:13:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_node	*create_node(int value)
 	new->value = value;
 	new->index = -1;
 	new->next = NULL;
-	// new->prev = NULL;
 	return (new);
 }
 int	add_node(t_node **stack, int value)
@@ -42,7 +41,6 @@ int	add_node(t_node **stack, int value)
 	while (last->next)
 		last = last->next;
 	last->next = new;
-	// new->prev = last;
 	return(1);
 }
 
@@ -85,73 +83,3 @@ void	assign_indexes(t_node *stack)
 		min->index = index++;
 	}
 }
-
-// int	initialize_stack(t_node **stack, char **args)
-// {
-// 	int	i;
-// 	int	error;
-// 	int	value;
-
-// 	i = 0;
-// 	while (args[i])
-// 	{
-// 		error = 0;
-// 		if (!is_valid_input(args[i]))
-// 			write_error();
-// 		value = ft_atoi(args[i], &error);
-// 		if (error)
-// 			write_error();
-// 		add_node(stack, value);
-// 		i++;
-// 	}
-// 	if (has_duplicate(*stack))
-// 		write_error();
-// 	assign_indexes(*stack); 
-// 	return (1);
-// }
-
-// int	initialize_stack(t_node **stack, char **args)
-// {
-// 	int	i;
-// 	int	error;
-// 	int	value;
-
-// 	i = 0;
-// 	while (args[i])
-// 	{
-// 		error = 0;
-// 		if (!is_valid_input(args[i]))
-// 			write(1, "Failed is_valid_input\n", 22);
-// 		value = ft_atoi(args[i], &error);
-// 		if (error)
-// 			write(1, "Failed ft_atoi\n", 16);
-// 		add_node(stack, value);
-// 		i++;
-// 	}
-// 	if (has_duplicate(*stack))
-// 		write(1, "Duplicate detected\n", 20);
-// 	assign_indexes(*stack); 
-// 	return (1);
-// }
-
-int initialize_stack(t_node **stack, char **args) {
-    int i;
-	int	error;
-	int value;
-
-	i = 0;
-    while (args[i]) {
-        error = 0;
-        if (!is_valid_input(args[i]))
-		  		write_error(stack);
-        value = ft_atoi(args[i], &error);
-        if (error || !add_node(stack, value))
-		  		write_error(stack);
-        i++;
-    }
-    if (has_duplicate(*stack))
-	 		write_error(stack);;
-    assign_indexes(*stack);
-    return (1);
-}
- 

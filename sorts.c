@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:07:29 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 23:39:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/04 10:36:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,115 +31,60 @@ void    sort_three(t_node **a)
         sa(a);
 }
 
-// void    sort_five(t_node **a, t_node **b)
-// {
-//     t_node *min;
+void   sort_four(t_node **a, t_node **b)
+{
+    int pos;
     
-//     while (stack_len(*a) > 3)
-//     {
-//         min = findmin(*a);
-//         if (*a == min)
-//             pb(b, a);
-//         else if ((*a)->next == min)
-//             sa(a);
-//         else 
-//         {
-//             if (min_pos_from_top(*a, min) <= stack_len(*a) / 2)
-//                 ra(a);
-//             else
-//                 rra(a);
-//         }
-//     }
-//     sort_three(a);
-//     pa(a, b);
-//     pa(a, b);
-//     if ((*a)->value > (*a)->next->value)
-//         sa(a);
-// }
-
-// void    sort_five(t_node **a, t_node **b)
-// {
-//     t_node *min;
-//     int     pos;
-//     int     len;
-
-//     while (stack_len(*a) > 3)
-//     {
-//         min = findmin(*a);
-//         pos = min_pos_from_top(*a, min);
-//         len = stack_len(*a);
-//         if (pos <= len / 2)
-//         {
-//             while ((*a) != min)
-//                 ra(a);
-//         }
-//         else
-//         {
-//             while ((*a) != min)
-//                 rra(a);
-//         }
-//         pb(b, a);
-//     }
-//     sort_three(a);
-//     pa(a, b);
-//     pa(a, b);
-// }
+    pos = find_pos(*a, 3);
+    if (pos <= 4 / 2)
+    {
+        while ((*a)->index != 3)
+            ra(a);
+    }
+    else
+    {
+        while ((*a)->index != 3)
+            rra(a);
+    }
+    pb(b, a);
+    sort_three(a);
+    pa(a, b);
+    ra(a);
+}
 
 void	sort_five(t_node **a, t_node **b)
 {
 	t_node	*min;
-
-	// Push the two smallest elements to stack B
+    
 	while (stack_len(*a) > 3)
 	{
-		min = findmin(*a); // you already have this function
-
-		// Rotate until min is at the top
+		min = findmin(*a);
 		while (*a && (*a)->value != min->value)
 			ra(a);
-		pb(a, b);
+		pb(b, a);
 	}
-
-	// Sort the remaining 3 elements
 	sort_three(a);
-
-	// Push back from B to A
 	if (*b)
 		pa(a, b);
 	if (*b)
 		pa(a, b);
 }
 
-
-void radix_sort(t_node **a, t_node **b) 
+int find_pos(t_node *stack, int big_index)
 {
-    int max_bits;
-    int biggest_n;
-    int i;
-    int j;
-    int size;
+    int pos;
 
-    biggest_n = find_biggest(*a);
-    max_bits = find_maxbit(biggest_n);
-    i = 0;
-    while (i < max_bits) 
+    pos = 0;
+    while (stack)
     {
-        j = 0;
-        size = stack_len(*a);
-        while (j < size) 
-        {
-            if (((*a)->index >> i) & 1)
-                ra(a);
-            else
-                pb(b, a);
-            j++;
-        }
-        
-        while (*b)
-        {
-            pa(a, b);
-        }
-        i++;
+        if (stack->index == big_index)
+            return (pos);
+        pos++;
+        stack = stack->next;
     }
+    return (-1);
 }
+
+
+
 

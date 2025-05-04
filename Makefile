@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/12 12:01:21 by codespace         #+#    #+#              #
-#    Updated: 2025/04/24 13:30:54 by codespace        ###   ########.fr        #
+#    Updated: 2025/05/04 11:54:40 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = main.c init.c ft_atoi.c check_errors.c ft_split.c push.c swap.c rotate.c rrotate.c sorts.c sort_utils.c str_utils.c
+SRC = main.c init.c ft_atoi.c parsing.c check_errors.c ft_split.c push.c swap.c rotate.c rrotate.c sorts.c radix_sort.c sort_utils.c str_utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -20,14 +20,10 @@ CC = cc
 
 FLAGS = -Wall -Werror -Wextra
 
-AR = ar -rcs
-
 DEL = rm -rf
 
 all: $(NAME)
 
-# $(NAME): $(OBJ)
-# 	$(AR) $@ $(OBJ)
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 

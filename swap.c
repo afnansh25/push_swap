@@ -6,25 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:26:22 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/03 23:33:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/04 09:19:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void swap(t_node **s) {
-//     if (!*s || !(*s)->next)
-//         return;
-//     t_node *first = *s;
-//     t_node *second = first->next;
-//     first->next = second->next;
-//     if (second->next)
-//         second->next->prev = first;
-//     second->prev = NULL;
-//     second->next = first;
-//     first->prev = second;
-//     *s = second;
-// }
 
 void    swap(t_node **s)
 {
