@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 13:54:06 by codespace         #+#    #+#             */
-/*   Updated: 2025/05/04 14:13:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/04 17:16:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,22 @@ void	assign_indexes(t_node *stack)
 			break;
 		min->index = index++;
 	}
+}
+void  sort_stack(t_node **a, t_node **b)
+{
+   int len;
+
+   if (stack_sorted(*a))
+      return ;
+   len = stack_len(*a);
+   if (len == 2)
+      sort_two(a);
+   else if (len == 3)
+      sort_three(a);
+   else if (len == 4)
+      sort_four(a, b);
+   else if (len == 5)
+      sort_five(a, b);
+   else
+      radix_sort(a, b);
 }
